@@ -1,0 +1,20 @@
+Se dă următorul tip de date 
+
+data B e = e :|: e | B e ::: B e
+infixr 5 :::
+infixr 6 :|:
+
+(c)	 Faceti B instanta a clasei Foldable
+
+fTest0 = maximum ("Mama" :|: "are" ::: "patru" :|: "mere" ::: "" :|: "si" ::: "doua" :|: "pere") == "si"
+
+
+(d)	Fie urmatoarea definitie de clasa
+
+class C e where
+  cFilter :: Monoid a => (a -> Bool) -> e a -> e a
+  toList :: (Monoid a, Eq a) => e a -> [a]
+
+Faceți B instanță a clasei C, unde cFilter schimbă elementele x în elementul neutru al monoidului dacă predicatul e fals și le lasa cum erau dacă nu, iar toList transformă structura intr-o listă care arată la fel (atenție la ordine!), păstrând doar elementele diferite de cel neutru.
+
+cTest0 = toList (cFilter (\x -> length x > 3) ("Mama" :|: "are" ::: "patru" :|: "mere" ::: "" :|: "si" ::: "doua" :|: "pere")) == ["Mama", "patru", "mere", "doua", "pere"]

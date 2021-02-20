@@ -1,0 +1,23 @@
+Se dă urmatorul tip de date pentru a defini 2-3 arbori cu proprietatea ca fiecare nod are o informatie de tip Char si 2 fii sau 2 informatii de tip Char si 3 fii:
+
+data Tree23 = Empty
+     | Node2 Char  Tree23  Tree23 
+     | Node3 Char  Char Tree23  Tree23 Tree23 
+
+myTree :: Tree23 
+myTree = (Node3 'a' 'b' (Node3 'b' 'a' (Node3 'c' 'c' Empty Empty Empty)(Node3 'd' 'a' Empty Empty Empty)(Node2 'a' Empty Empty))(Node2 'a' (Node2 'b' Empty Empty) (Node2 'b' Empty Empty))(Node3 'c' 'a' (Node2 'c' Empty Empty) (Node2 'd' Empty Empty)(Node2 'c' Empty Empty)))
+
+
+b)	Sa se scrie o functie  care primeste ca parametru un arbore Tree23 si un cuvant nume si intoarce lista  caracterelor din arbore care se gasesc in cuvantul respectiv astfel incat  un caracter apare in rezultat o singura data, indiferent de numarul de aparitii in arbore si in cuvantul dat ca argument. Se va face distinctia intre litere mari si mici.  
+
+
+c)	Faceti Tree23 instanta a clasei Eq astfel incat doi arbori sunt identici daca multimile de caractere din nodurile cu 2 fii coincid (numarul de aparitii si ordinea in care apar informatiile in subarborii cu 2 fii nu are importanta; se face distinctia intre litere mari si litere mici). 
+
+
+d)	
+
+data Tree2 = Vid | N Char Tree2 Tree2
+
+Scrieti o functie care primeste ca argument un arbore Tree23 si il transforma intr-un arbore Tree2 astfel incat, Empty devine Vid, nodurile cu 2 fii isi pastreaza informatia iar nodurile cu trei fii sunt transformate astfel: 
+
+Node3 c1 c2 T1 T2 T3 devine N c1 T1 (N c2 T2 T3) 
